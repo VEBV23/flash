@@ -52,7 +52,7 @@ button:hover{transform:translateY(-2px) scale(1.03)}
     <div class="kicker">A little something for</div>
     <h1>Jheel <span class="accent">✦</span></h1>
     <p>There is something I've wanted to tell you for a while.</p>
-    <button onclick="go(1)">Start ❤️</button>
+    <button onclick="startJourney()">Start ❤️</button>
     <div class="counter">1 / 7</div>
   </div>
 </section>
@@ -130,6 +130,13 @@ let current=0;
 const audio=document.getElementById('bgMusic');
 const playBtn=document.getElementById('playBtn');
 let isPlaying=false;
+
+function startJourney(){
+  audio.play();
+  playBtn.textContent='⏸ Pause';
+  isPlaying=true;
+  go(1);
+}
 
 function go(n){
   pages[current].classList.remove('active');
