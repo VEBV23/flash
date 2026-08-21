@@ -102,14 +102,11 @@ button:hover{transform:translateY(-2px) scale(1.03)}
   </div>
 </section>
 
-<!-- Audio Element -->
-<audio id="bgMusic" loop autoplay>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
+<!-- YouTube Embed -->
+<iframe id="musicPlayer" width="0" height="0" src="https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1&controls=0&modestbranding=1" frameborder="0" allow="autoplay" style="display:none;"></iframe>
 
 <script>
 const pages=[...document.querySelectorAll('.page')];
-const audio=document.getElementById('bgMusic');
 let current=0;
 
 function go(n){
@@ -141,8 +138,6 @@ for(let i=0;i<30;i++){
   h.style.animationDuration=(7+Math.random()*5)+'s';
   document.body.appendChild(h);
 }
-
-audio.play().catch(()=>{});
 </script>
 </body>
 </html>
