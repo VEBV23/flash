@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Flash ⚡</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:Georgia,serif;color:#fff;background:#090309}
+.page{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;opacity:0;pointer-events:none;transform:translateX(30px) scale(.98);transition:opacity .7s ease,transform .7s ease;background:radial-gradient(circle at 50% 38%,#4b1a40 0,#210b1e 48%,#080308 100%)}
+.page.active{opacity:1;pointer-events:auto;transform:none}
+.content{width:min(92%,680px);padding:52px 28px;border:1px solid rgba(255,255,255,.16);border-radius:32px;background:rgba(255,255,255,.07);backdrop-filter:blur(15px);box-shadow:0 25px 90px rgba(0,0,0,.55)}
+.kicker{font:11px Arial,sans-serif;letter-spacing:5px;text-transform:uppercase;opacity:.55;margin-bottom:22px}
+h1{font-size:clamp(52px,13vw,92px);font-weight:400;line-height:1;margin:0 0 22px}
+h2{font-size:clamp(28px,7vw,50px);font-weight:400;line-height:1.2;margin:0 0 25px}
+p{font-size:clamp(19px,4.8vw,28px);line-height:1.65;margin:0 auto 30px;max-width:570px}
+.accent{color:#ff9fc9}
+.flash{color:#ffbd5c}
+button{border:0;border-radius:999px;padding:15px 29px;background:linear-gradient(135deg,#ff5d9e,#c73779);color:#fff;font-size:15px;cursor:pointer;box-shadow:0 10px 35px rgba(255,80,150,.3);transition:.25s}
+button:hover{transform:translateY(-2px) scale(1.03)}
+.counter{font:10px Arial,sans-serif;letter-spacing:3px;opacity:.35;margin-top:20px}
+.heart{position:fixed;bottom:-30px;opacity:0;font-size:22px;animation:float 8s linear infinite;z-index:0}
+@keyframes float{0%{transform:translateY(0) rotate(0);opacity:0}15%{opacity:.55}100%{transform:translateY(-115vh) rotate(360deg);opacity:0}}
+.glow{animation:glow 2s ease-in-out infinite alternate}
+@keyframes glow{from{text-shadow:0 0 8px rgba(255,130,190,.2)}to{text-shadow:0 0 30px rgba(255,130,190,.7)}}
+.finalLove{font-size:clamp(36px,9vw,65px);color:#ff9fc9;font-weight:bold;margin:15px 0 20px}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<section class="page active">
+  <div class="content">
+    <div class="kicker">A little something for</div>
+    <h1>Jheel <span class="accent">✦</span></h1>
+    <p>There is something I've wanted to tell you for a while.</p>
+    <button onclick="go(1)">Start ❤️</button>
+    <div class="counter">1 / 7</div>
+  </div>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page">
+  <div class="content">
+    <div class="kicker">For you</div>
+    <h1 class="glow">Flash <span class="flash">⚡</span></h1>
+    <p>I always wanted this moment.</p>
+    <button onclick="go(2)">Keep going…</button>
+    <div class="counter">2 / 7</div>
+  </div>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page">
+  <div class="content">
+    <div class="kicker">Something I've realized</div>
+    <p>I don't know when it happened, but somewhere along the way, you became someone really special to me.</p>
+    <button onclick="go(3)">Next ❤️</button>
+    <div class="counter">3 / 7</div>
+  </div>
+</section>
+
+<!-- PAGE 4 -->
+<section class="page">
+  <div class="content">
+    <div class="kicker">Honestly…</div>
+    <p>I've been waiting for the right moment to tell you this.</p>
+    <button onclick="go(4)">One more thing…</button>
+    <div class="counter">4 / 7</div>
+  </div>
+</section>
+
+<!-- PAGE 5 -->
+<section class="page">
+  <div class="content">
+    <div class="kicker">Maybe you already know</div>
+    <p>Maybe you already know what I'm trying to say… but this time, I wanted you to hear it from me.</p>
+    <button onclick="go(5)">Almost there 👀</button>
+    <div class="counter">5 / 7</div>
+  </div>
+</section>
+
+<!-- PAGE 6 -->
+<section class="page">
+  <div class="content">
+    <div class="kicker">Flash ⚡</div>
+    <h2>Maybe it's time we stop pretending this is just friendship. <span class="accent">❤️</span></h2>
+    <button onclick="go(6)">One last thing…</button>
+    <div class="counter">6 / 7</div>
+  </div>
+</section>
+
+<!-- PAGE 7 -->
+<section class="page">
+  <div class="content">
+    <div class="kicker">From me, to you</div>
+    <div class="finalLove glow">I love you 3000. ❤️</div>
+    <p>And I always wanted this moment to be ours.</p>
+    <button onclick="hearts()">⚡❤️</button>
+    <div class="counter">7 / 7</div>
+  </div>
+</section>
+
+<script>
+const pages=[...document.querySelectorAll('.page')];
+let current=0;
+
+function go(n){
+  pages[current].classList.remove('active');
+  current=n;
+  pages[current].classList.add('active');
+}
+
+function hearts(){
+  for(let i=0;i<45;i++){
+    const h=document.createElement('div');
+    h.className='heart';
+    h.textContent=Math.random()>.45?'♥':'♡';
+    h.style.left=Math.random()*100+'%';
+    h.style.animationDelay=(Math.random()*1.5)+'s';
+    h.style.animationDuration=(4+Math.random()*5)+'s';
+    h.style.fontSize=(15+Math.random()*20)+'px';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),10000);
+  }
+}
+
+for(let i=0;i<30;i++){
+  const h=document.createElement('div');
+  h.className='heart';
+  h.textContent=Math.random()>.5?'♥':'♡';
+  h.style.left=Math.random()*100+'%';
+  h.style.animationDelay=(Math.random()*8)+'s';
+  h.style.animationDuration=(7+Math.random()*5)+'s';
+  document.body.appendChild(h);
+}
+</script>
+</body>
+</html>
